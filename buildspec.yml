@@ -2,7 +2,7 @@ version: 0.2
 
 phases:
   build:
-    command:
+    commands:
     - echo "This is Build Phase...... zipping the lambda function"
     - zip -r deployment_package.zip MyFunc.py
 
