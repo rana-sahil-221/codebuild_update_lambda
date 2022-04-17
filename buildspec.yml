@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  build:
+    command:
+    - echo "This is Build Phase...... zipping the lambda function"
+    - zip -r deployment_package.zip MyFunc.py
+
+  post_build:
+    commands:
+    - echo "Deploying the changes to function"
+    - aws lambda update-function-code --function MyFunc --zip-file fileb://deployment_package.zip
+artifacts:
+  type: zip
+  paths:
+    - '*'
+
